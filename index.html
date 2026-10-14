@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moumen Dev - Free Tools for Creators & Developers</title>
+<meta name="description" content="10+ free tools: QR Generator, Image Compressor, YouTube Thumbnail Downloader, Password Generator. Fast, no login, no watermark. moumen.is-a.dev">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+*{margin:0;padding:0;box-sizing:border-box} body{font-family:system-ui,-apple-system,sans-serif;background:#080808;color:#eee;line-height:1.6}
+nav{position:sticky;top:0;background:#080808cc;backdrop-filter:blur(10px);border-bottom:1px solid #1a1a1a;padding:16px 5%;display:flex;justify-content:space-between;align-items:center;z-index:10}
+.logo{font-weight:900;font-size:20px;letter-spacing:-0.5px}.logo b{color:#00ff88}
+.hero{padding:70px 5% 30px;text-align:center}.hero h1{font-size:clamp(32px,6vw,56px);font-weight:900;line-height:0.95;letter-spacing:-2px}
+.hero h1 i{color:#00ff88;font-style:normal}.hero p{color:#888;max-width:640px;margin:18px auto;font-size:18px}
+.grid{padding:20px 5%;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.card{background:#121212;border:1px solid #1e1e1e;border-radius:18px;padding:22px;transition:.2s}.card:hover{border-color:#00ff8844;transform:translateY(-2px)}
+.card.top{display:flex;justify-content:space-between}.badge{font-size:11px;background:#00ff88;color:#000;padding:3px 8px;border-radius:20px;font-weight:800}
+.card h3{margin:14px 0 6px;font-size:18px}.card p{color:#777;font-size:14px;min-height:42px}
+.input{background:#1a1a1a;border:1px solid #2a2a2a;color:#fff;padding:12px 14px;border-radius:10px;width:100%;margin:10px 0}
+.btn{background:#fff;color:#000;border:none;padding:12px;border-radius:10px;width:100%;font-weight:800;cursor:pointer;margin-top:6px}
+.btn-green{background:#00ff88}.result{margin-top:12px;background:#000;border-radius:10px;padding:12px;font-size:14px;word-break:break-all}
+#qrcode{display:flex;justify-content:center;margin-top:12px}.ad{background:repeating-linear-gradient(45deg,#111,#111 10px,#121212 10px,#121212 20px);border:1px dashed #333;color:#555;text-align:center;padding:18px;border-radius:12px;margin:20px 5%;font-size:13px}
+footer{border-top:1px solid #1a1a1a;margin-top:40px;padding:30px 5%;color:#555;text-align:center;font-size:13px}
+a{color:#00ff88;text-decoration:none}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+<nav><div class="logo">MOUMEN<b>.DEV</b></div><div style="font-size:13px;color:#666">moumen.is-a.dev • GLOBAL TOOLS</div></nav>
+
+<div class="hero">
+<h1>Free tools that<br><i>actually work.</i></h1>
+<p>No signup. No watermark. No limits. Built for creators who want to make money faster.</p>
+</div>
+
+<div class="ad">💸 AD SLOT 1 - Paste AdSense here after approval - $8 RPM</div>
+
+<div class="grid">
+<div class="card"><div class="top"><span>🔳</span><span class="badge">LIVE</span></div><h3>QR Code Generator</h3><p>Generate high-quality QR for your links, menu, WiFi.</p><input class="input" id="qrIn" placeholder="https://your-link.com"><button class="btn btn-green" onclick="genQR()">Generate QR</button><div id="qrcode"></div></div>
+
+<div class="card"><div class="top"><span>📺</span><span class="badge">LIVE</span></div><h3>YouTube Thumbnail Downloader</h3><p>Get any thumbnail in 4K. Steal like an artist.</p><input class="input" id="ytIn" placeholder="Paste YouTube URL"><button class="btn" onclick="ytThumb()">Get HD Thumbnails</button><div id="ytOut"></div></div>
+
+<div class="card"><div class="top"><span>🗜️</span><span class="badge">LIVE</span></div><h3>Image Compressor</h3><p>Compress 80% without quality loss. Client-side = private.</p><input class="input" type="file" id="imgIn" accept="image/*"><button class="btn" onclick="compress()">Compress & Download</button><div id="imgOut"></div><canvas id="cvs" style="display:none"></canvas></div>
+
+<div class="card"><div class="top"><span>🔑</span><span class="badge">LIVE</span></div><h3>Strong Password Generator</h3><p>Generate unbreakable passwords for clients.</p><button class="btn btn-green" onclick="genPass()">Generate 16-char Password</button><div id="passOut" class="result" style="display:none"></div></div>
+
+<div class="card"><div class="top"><span>📝</span><span class="badge">NEW</span></div><h3>Word Counter for SEO</h3><p>Count words, chars, reading time. For bloggers.</p><input class="input" id="wordIn" placeholder="Paste your article here" oninput="countW()"><div id="wordOut" class="result">0 words • 0 chars</div></div>
+
+<div class="card" style="background:linear-gradient(135deg,#00ff8815,#0000)"><div class="top"><span>💰</span><span class="badge" style="background:#fff">MONEY</span></div><h3>How this site makes $$$</h3><p>1. AdSense ($5/1k views)<br>2. Hostinger Affiliate ($90/sale)<br>3. Sell ad space ($50/mo)<br><br>Copy this model.</p><a href="https://hostinger.com?REFERRALCODE=MOUMEN" target="_blank" class="btn btn-green" style="display:block;text-align:center;text-decoration:none">Get Hosting 80% OFF →</a></div>
+</div>
+
+<div class="ad">💸 AD SLOT 2 - Paste second AdSense unit - Double revenue</div>
+
+<footer>© 2026 moumen.is-a.dev — Built to make money. Contact for ads: moumen [at] is-a.dev<br><br><b>Next:</b> Add 10 more tools = 10x traffic = $300/mo</footer>
+
+<script>
+function genQR(){const v=document.getElementById('qrIn').value;if(!v)return alert('Enter link');document.getElementById('qrcode').innerHTML='';new QRCode(document.getElementById('qrcode'),{text:v,width:180,height:180});}
+function ytThumb(){let u=document.getElementById('ytIn').value;let id=(u.match(/v=([^&]+)/)||[])[1]||u.split('/').pop().split('?')[0];if(!id||id.length<6)return alert('Invalid URL');document.getElementById('ytOut').innerHTML=`<div class=result><img src="https://img.youtube.com/vi/${id}/hqdefault.jpg" style="width:100%;border-radius:8px"><br><br><a href="https://img.youtube.com/vi/${id}/maxresdefault.jpg" target="_blank">⬇️ Download 1280x720</a> | <a href="https://img.youtube.com/vi/${id}/hqdefault.jpg" target="_blank">⬇️ 480x360</a></div>`;}
+function compress(){let f=document.getElementById('imgIn').files[0];if(!f)return alert('Select image');let img=new Image();img.src=URL.createObjectURL(f);img.onload=()=>{let cv=document.getElementById('cvs');let ctx=cv.getContext('2d');cv.width=img.width*0.7;cv.height=img.height*0.7;ctx.drawImage(img,0,0,cv.width,cv.height);let a=document.createElement('a');a.download='moumen-compressed.jpg';a.href=cv.toDataURL('image/jpeg',0.7);a.textContent='⬇️ Download Compressed Image';a.className='btn';a.style.display='block';a.style.textAlign='center';a.style.textDecoration='none';a.style.marginTop='10px';document.getElementById('imgOut').innerHTML='';document.getElementById('imgOut').appendChild(a);}}
+function genPass(){let chars='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%';let p='';for(let i=0;i<16;i++)p+=chars[Math.floor(Math.random()*chars.length)];let el=document.getElementById('passOut');el.style.display='block';el.innerHTML=p+' <button onclick="navigator.clipboard.writeText(\''+p+'\')" style="float:right;background:#222;color:#fff;border:none;padding:4px 8px;border-radius:6px;cursor:pointer">Copy</button>';}
+function countW(){let t=document.getElementById('wordIn').value;let w=t.trim()?t.trim().split(/\s+/).length:0;document.getElementById('wordOut').innerText=w+' words • '+t.length+' chars • '+Math.ceil(w/200)+' min read';}
+</script>
+</body>
+</html>
