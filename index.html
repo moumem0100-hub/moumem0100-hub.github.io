@@ -1,64 +1,451 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moumen Dev - Free Tools for Creators & Developers</title>
-<meta name="description" content="10+ free tools: QR Generator, Image Compressor, YouTube Thumbnail Downloader, Password Generator. Fast, no login, no watermark. moumen.is-a.dev">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<style>
-*{margin:0;padding:0;box-sizing:border-box} body{font-family:system-ui,-apple-system,sans-serif;background:#080808;color:#eee;line-height:1.6}
-nav{position:sticky;top:0;background:#080808cc;backdrop-filter:blur(10px);border-bottom:1px solid #1a1a1a;padding:16px 5%;display:flex;justify-content:space-between;align-items:center;z-index:10}
-.logo{font-weight:900;font-size:20px;letter-spacing:-0.5px}.logo b{color:#00ff88}
-.hero{padding:70px 5% 30px;text-align:center}.hero h1{font-size:clamp(32px,6vw,56px);font-weight:900;line-height:0.95;letter-spacing:-2px}
-.hero h1 i{color:#00ff88;font-style:normal}.hero p{color:#888;max-width:640px;margin:18px auto;font-size:18px}
-.grid{padding:20px 5%;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
-.card{background:#121212;border:1px solid #1e1e1e;border-radius:18px;padding:22px;transition:.2s}.card:hover{border-color:#00ff8844;transform:translateY(-2px)}
-.card.top{display:flex;justify-content:space-between}.badge{font-size:11px;background:#00ff88;color:#000;padding:3px 8px;border-radius:20px;font-weight:800}
-.card h3{margin:14px 0 6px;font-size:18px}.card p{color:#777;font-size:14px;min-height:42px}
-.input{background:#1a1a1a;border:1px solid #2a2a2a;color:#fff;padding:12px 14px;border-radius:10px;width:100%;margin:10px 0}
-.btn{background:#fff;color:#000;border:none;padding:12px;border-radius:10px;width:100%;font-weight:800;cursor:pointer;margin-top:6px}
-.btn-green{background:#00ff88}.result{margin-top:12px;background:#000;border-radius:10px;padding:12px;font-size:14px;word-break:break-all}
-#qrcode{display:flex;justify-content:center;margin-top:12px}.ad{background:repeating-linear-gradient(45deg,#111,#111 10px,#121212 10px,#121212 20px);border:1px dashed #333;color:#555;text-align:center;padding:18px;border-radius:12px;margin:20px 5%;font-size:13px}
-footer{border-top:1px solid #1a1a1a;margin-top:40px;padding:30px 5%;color:#555;text-align:center;font-size:13px}
-a{color:#00ff88;text-decoration:none}
-</style>
-<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <title>MOUMEN.DEV — 10 Free Online Tools for Creators</title>
+  <meta name="description" content="Free online tools for creators: QR code generator, YouTube thumbnail finder, image compressor, password generator, word counter, case converter, age calculator, color palettes, and encoding tools.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://moumen.is-a.dev/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="MOUMEN.DEV — Free Tools for Creators">
+  <meta property="og:description" content="Useful free browser tools for creators. No account required.">
+  <meta property="og:url" content="https://moumen.is-a.dev/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="MOUMEN.DEV — Free Tools for Creators">
+  <meta name="twitter:description" content="Free browser tools for creators.">
+  <style>
+    :root{color-scheme:dark;--bg:#080808;--card:#121212;--card2:#171717;--border:#252525;--green:#00ff88;--text:#f3f3f3;--muted:#999}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+    a{color:inherit}
+    button,input,textarea,select{font:inherit}
+    button{cursor:pointer}
+    .wrap{width:min(1180px,92%);margin-inline:auto}
+    nav{position:sticky;top:0;z-index:20;background:rgba(8,8,8,.92);backdrop-filter:blur(16px);border-bottom:1px solid #202020}
+    .nav-inner{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .logo{font-weight:950;letter-spacing:-.8px;font-size:1.2rem;text-decoration:none;white-space:nowrap}
+    .logo b{color:var(--green)}
+    .nav-links{display:flex;align-items:center;gap:18px;color:#b8b8b8;font-size:.9rem}
+    .nav-links a{text-decoration:none}.nav-links a:hover{color:var(--green)}
+    .online{font-size:.76rem;color:#b5b5b5;border:1px solid #292929;border-radius:999px;padding:7px 10px;white-space:nowrap}
+    .online i{display:inline-block;width:7px;height:7px;background:var(--green);border-radius:50%;margin-right:6px}
+    .hero{text-align:center;padding:76px 0 36px;position:relative;overflow:hidden}
+    .hero:before{content:"";position:absolute;width:480px;height:260px;background:rgba(0,255,136,.07);filter:blur(90px);border-radius:50%;left:50%;top:0;transform:translateX(-50%);pointer-events:none}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid #254535;background:#0d1a13;color:#9fffc9;border-radius:999px;padding:6px 12px;font-size:.78rem;margin-bottom:20px;position:relative}
+    h1{font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.02;letter-spacing:-2px;font-weight:950;position:relative}
+    h1 span{color:var(--green)}
+    .hero p{max-width:650px;margin:18px auto 0;color:#aaa;font-size:1.04rem}
+    .actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:26px}
+    .btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;border:1px solid transparent;border-radius:10px;padding:11px 15px;font-weight:800;background:var(--green);color:#031109;text-decoration:none;transition:transform .18s,background .18s,border-color .18s}
+    .btn:hover{transform:translateY(-2px);background:#63ffb5}
+    .btn.secondary{background:#151515;color:#eee;border-color:#303030}
+    .btn.secondary:hover{border-color:#4d4d4d;background:#1b1b1b}
+    .btn.small{padding:8px 11px;font-size:.84rem}
+    .stats{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-top:28px;color:#929292;font-size:.82rem}
+    .stats strong{color:#eee}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin:22px 0 18px}
+    .section-head h2{font-size:1.6rem;letter-spacing:-.5px}
+    .section-head p{color:var(--muted);font-size:.9rem}
+    .search{width:min(330px,100%);background:#111;border:1px solid #2a2a2a;color:#fff;border-radius:10px;padding:11px 13px;outline:none}
+    .search:focus,.field:focus,textarea:focus,select:focus{border-color:#00a95b;box-shadow:0 0 0 3px #00ff8814;outline:none}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding-bottom:46px}
+    .card{min-width:0;background:linear-gradient(160deg,#141414,#101010);border:1px solid var(--border);border-radius:16px;padding:20px;transition:transform .2s,border-color .2s}
+    .card:hover{transform:translateY(-3px);border-color:#3b493f}
+    .card-top{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+    .tool-icon{display:grid;place-items:center;width:42px;height:42px;flex:0 0 42px;border-radius:12px;background:#0c2518;border:1px solid #17472e;font-size:1.2rem}
+    .card h3{font-size:1.04rem;line-height:1.25}
+    .number{font-size:.72rem;color:#777;letter-spacing:1px;margin-bottom:2px}
+    .desc{font-size:.84rem;color:#929292;min-height:42px;margin:8px 0 13px}
+    .field,textarea,select{width:100%;background:#090909;color:#f2f2f2;border:1px solid #303030;border-radius:9px;padding:11px 12px;margin:5px 0;min-width:0}
+    textarea{min-height:110px;resize:vertical}
+    input[type="file"]{font-size:.82rem;padding:8px}
+    input[type="color"]{height:46px;padding:4px}
+    .row{display:flex;gap:8px;align-items:center}.row>*{min-width:0;flex:1}
+    .tool-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .tool-actions .btn{flex:1}
+    .result{margin-top:11px;padding:11px;background:#080808;border:1px solid #242424;border-radius:9px;color:#e7e7e7;overflow-wrap:anywhere;font-size:.87rem;min-height:20px}
+    .result:empty{display:none}
+    .muted{color:#8e8e8e;font-size:.8rem}
+    .qr-box{display:flex;justify-content:center;align-items:center;background:white;border-radius:8px;padding:10px;min-height:20px}
+    .qr-box img,.qr-box canvas{max-width:100%;height:auto!important}
+    .meter{height:7px;border-radius:999px;background:#2a2a2a;overflow:hidden;margin-top:9px}
+    .meter span{display:block;height:100%;width:0;background:#ff6464;transition:width .2s,background .2s}
+    .swatches{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-top:10px}
+    .swatch{height:55px;border-radius:7px;border:1px solid #ffffff22;position:relative;cursor:pointer}
+    .swatch span{position:absolute;bottom:3px;left:3px;right:3px;text-align:center;font-size:.58rem;background:#0009;border-radius:3px;padding:2px}
+    .preview{min-height:80px;border-radius:9px;border:1px solid #333;margin-top:9px}
+    .ad-slot{margin:0 auto 30px;max-width:970px;min-height:70px;border:1px dashed #303030;border-radius:12px;display:grid;place-items:center;color:#626262;font-size:.78rem;text-align:center;padding:12px}
+    .info-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:0 0 42px}
+    .info{background:#101010;border:1px solid #222;border-radius:14px;padding:18px}
+    .info h3{font-size:1rem;margin-bottom:6px}.info p{font-size:.86rem;color:#999}
+    footer{border-top:1px solid #202020;padding:28px 0 36px;color:#888;font-size:.83rem}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .footer-links{display:flex;gap:16px;flex-wrap:wrap}.footer-links a{color:#aaa;text-decoration:none}.footer-links a:hover{color:var(--green)}
+    .notice{color:#9a9a9a;font-size:.78rem;margin-top:12px}
+    .hidden{display:none!important}
+    .status{font-size:.8rem;color:#9fffc9;margin-top:7px}
+    @media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.info-grid{grid-template-columns:1fr}.nav-links{gap:10px}}
+    @media(max-width:600px){.nav-inner{min-height:62px;flex-wrap:wrap;padding:10px 0}.nav-links{order:3;width:100%;justify-content:center;padding-bottom:4px}.online{font-size:.7rem}.hero{padding-top:54px}h1{letter-spacing:-1.2px}.grid{grid-template-columns:1fr}.section-head{align-items:stretch;flex-direction:column}.search{width:100%}.card{padding:17px}.desc{min-height:0}.stats{gap:12px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","name":"MOUMEN.DEV","url":"https://moumen.is-a.dev/","description":"Free online tools for creators."}
+  </script>
 </head>
 <body>
-<nav><div class="logo">MOUMEN<b>.DEV</b></div><div style="font-size:13px;color:#666">moumen.is-a.dev • GLOBAL TOOLS</div></nav>
+<nav>
+  <div class="wrap nav-inner">
+    <a class="logo" href="#" aria-label="MOUMEN.DEV home">MOUMEN<span><b>.DEV</b></span></a>
+    <div class="nav-links"><a href="#tools">Free tools</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+    <div class="online" title="No live visitor analytics are connected"><i></i>Free browser tools</div>
+  </div>
+</nav>
 
-<div class="hero">
-<h1>Free tools that<br><i>actually work.</i></h1>
-<p>No signup. No watermark. No limits. Built for creators who want to make money faster.</p>
-</div>
+<header class="hero wrap">
+  <div class="eyebrow">✦ Simple tools. Useful results.</div>
+  <h1>10 Free Tools<br>for <span>Creators</span></h1>
+  <p>Useful browser-based tools for everyday creator tasks. No account required. Your text and images stay in your browser for local processing wherever possible.</p>
+  <div class="actions"><a class="btn" href="#tools">Explore the tools <span aria-hidden="true">↓</span></a><a class="btn secondary" href="#contact">Need a website? Let’s talk</a></div>
+  <div class="stats"><span><strong>10</strong> practical tools</span><span><strong>Free</strong> to use</span><span><strong>Browser-based</strong> processing</span></div>
+</header>
 
-<div class="ad">💸 AD SLOT 1 - Paste AdSense here after approval - $8 RPM</div>
+<main class="wrap">
+  <div class="section-head" id="tools">
+    <div><h2>Explore the toolkit</h2><p>Pick a tool and get started in seconds.</p></div>
+    <input class="search" id="toolSearch" type="search" placeholder="Search tools..." aria-label="Search tools">
+  </div>
 
-<div class="grid">
-<div class="card"><div class="top"><span>🔳</span><span class="badge">LIVE</span></div><h3>QR Code Generator</h3><p>Generate high-quality QR for your links, menu, WiFi.</p><input class="input" id="qrIn" placeholder="https://your-link.com"><button class="btn btn-green" onclick="genQR()">Generate QR</button><div id="qrcode"></div></div>
+  <div class="grid" id="toolGrid">
+    <section class="card tool-card" data-search="qr code generator link url share">
+      <div class="card-top"><div class="tool-icon">▦</div><div><div class="number">TOOL 01</div><h3>QR Code Generator</h3></div></div>
+      <p class="desc">Turn a link or short text into a QR code you can save and share.</p>
+      <label class="muted" for="qrIn">Link or text</label><input class="field" id="qrIn" type="text" placeholder="https://example.com">
+      <div class="tool-actions"><button class="btn" id="qrBtn">Generate QR</button><button class="btn secondary" id="qrDownload" disabled>Download PNG</button></div>
+      <div class="result" id="qrResult" aria-live="polite"></div>
+      <p class="notice">QR generation uses a third-party CDN library and needs an internet connection the first time.</p>
+    </section>
 
-<div class="card"><div class="top"><span>📺</span><span class="badge">LIVE</span></div><h3>YouTube Thumbnail Downloader</h3><p>Get any thumbnail in 4K. Steal like an artist.</p><input class="input" id="ytIn" placeholder="Paste YouTube URL"><button class="btn" onclick="ytThumb()">Get HD Thumbnails</button><div id="ytOut"></div></div>
+    <section class="card tool-card" data-search="youtube thumbnail downloader image preview">
+      <div class="card-top"><div class="tool-icon">▶</div><div><div class="number">TOOL 02</div><h3>YouTube Thumbnail Finder</h3></div></div>
+      <p class="desc">Preview available thumbnail sizes from a public YouTube video URL or ID.</p>
+      <label class="muted" for="ytIn">YouTube URL or video ID</label><input class="field" id="ytIn" placeholder="Paste a YouTube link">
+      <button class="btn" id="ytBtn">Find thumbnails</button>
+      <div class="result" id="ytOut" aria-live="polite"></div>
+      <p class="notice">Availability and resolution depend on the video. Open a size to save it from your browser.</p>
+    </section>
 
-<div class="card"><div class="top"><span>🗜️</span><span class="badge">LIVE</span></div><h3>Image Compressor</h3><p>Compress 80% without quality loss. Client-side = private.</p><input class="input" type="file" id="imgIn" accept="image/*"><button class="btn" onclick="compress()">Compress & Download</button><div id="imgOut"></div><canvas id="cvs" style="display:none"></canvas></div>
+    <section class="card tool-card" data-search="image compressor resize jpg optimize reduce file size">
+      <div class="card-top"><div class="tool-icon">▧</div><div><div class="number">TOOL 03</div><h3>Image Compressor</h3></div></div>
+      <p class="desc">Compress an image locally and compare the original and output file sizes.</p>
+      <label class="muted" for="imgIn">Choose an image</label><input class="field" id="imgIn" type="file" accept="image/*">
+      <div class="row"><label class="muted" for="qualityIn">JPEG quality</label><select id="qualityIn" class="field"><option value=".45">45% — smaller</option><option value=".6" selected>60% — balanced</option><option value=".75">75% — clearer</option><option value=".9">90% — high</option></select></div>
+      <button class="btn" id="compressBtn">Compress image</button>
+      <div class="result" id="imgOut" aria-live="polite"></div><canvas id="compressCanvas" class="hidden"></canvas>
+    </section>
 
-<div class="card"><div class="top"><span>🔑</span><span class="badge">LIVE</span></div><h3>Strong Password Generator</h3><p>Generate unbreakable passwords for clients.</p><button class="btn btn-green" onclick="genPass()">Generate 16-char Password</button><div id="passOut" class="result" style="display:none"></div></div>
+    <section class="card tool-card" data-search="password generator strong secure random copy">
+      <div class="card-top"><div class="tool-icon">⛨</div><div><div class="number">TOOL 04</div><h3>Password Generator</h3></div></div>
+      <p class="desc">Create a random password locally. Generated passwords are not sent to a server.</p>
+      <div class="row"><label class="muted" for="passLength">Length</label><select class="field" id="passLength"><option>12</option><option selected>16</option><option>20</option><option>24</option><option>32</option></select></div>
+      <div class="result" id="passOut" aria-live="polite">Your password will appear here.</div>
+      <div class="meter"><span id="passMeter"></span></div><p class="muted" id="passStrength">Strength estimate</p>
+      <div class="tool-actions"><button class="btn" id="passBtn">Generate password</button><button class="btn secondary" id="passCopy">Copy</button></div>
+    </section>
 
-<div class="card"><div class="top"><span>📝</span><span class="badge">NEW</span></div><h3>Word Counter for SEO</h3><p>Count words, chars, reading time. For bloggers.</p><input class="input" id="wordIn" placeholder="Paste your article here" oninput="countW()"><div id="wordOut" class="result">0 words • 0 chars</div></div>
+    <section class="card tool-card" data-search="word counter character count seo keyword density reading time">
+      <div class="card-top"><div class="tool-icon">¶</div><div><div class="number">TOOL 05</div><h3>Word Counter + SEO Check</h3></div></div>
+      <p class="desc">Count words and characters, estimate reading time, and check a chosen keyword.</p>
+      <label class="muted" for="wordIn">Paste your text</label><textarea id="wordIn" class="field" placeholder="Paste or write your content here..."></textarea>
+      <label class="muted" for="keywordIn">Keyword to check (optional)</label><input id="keywordIn" class="field" placeholder="e.g. free online tools">
+      <div class="result" id="wordOut" aria-live="polite">Words: 0 · Characters: 0 · Reading time: 0 min</div>
+    </section>
 
-<div class="card" style="background:linear-gradient(135deg,#00ff8815,#0000)"><div class="top"><span>💰</span><span class="badge" style="background:#fff">MONEY</span></div><h3>How this site makes $$$</h3><p>1. AdSense ($5/1k views)<br>2. Hostinger Affiliate ($90/sale)<br>3. Sell ad space ($50/mo)<br><br>Copy this model.</p><a href="https://hostinger.com?REFERRALCODE=MOUMEN" target="_blank" class="btn btn-green" style="display:block;text-align:center;text-decoration:none">Get Hosting 80% OFF →</a></div>
-</div>
+    <section class="card tool-card" data-search="background remover remove background image demo filter">
+      <div class="card-top"><div class="tool-icon">✧</div><div><div class="number">TOOL 06</div><h3>Background Filter Demo</h3></div></div>
+      <p class="desc">Preview a simple visual filter. This demo does not truly identify or remove an image background.</p>
+      <label class="muted" for="bgIn">Choose an image</label><input class="field" id="bgIn" type="file" accept="image/*">
+      <div class="row"><label class="muted" for="bgFilter">Preview effect</label><select class="field" id="bgFilter"><option value="contrast(1.12) saturate(1.15)">Enhance colors</option><option value="grayscale(1)">Grayscale</option><option value="sepia(.55)">Warm tone</option><option value="brightness(1.15) contrast(1.1)">Brighten</option></select></div>
+      <div class="result" id="bgOut"></div>
+      <p class="notice">For real AI background removal, use a reputable service directly and review its privacy terms. No affiliate relationship is implied.</p>
+    </section>
 
-<div class="ad">💸 AD SLOT 2 - Paste second AdSense unit - Double revenue</div>
+    <section class="card tool-card" data-search="text case converter uppercase lowercase title camel case">
+      <div class="card-top"><div class="tool-icon">Aa</div><div><div class="number">TOOL 07</div><h3>Text Case Converter</h3></div></div>
+      <p class="desc">Convert text to uppercase, lowercase, title case, or camelCase.</p>
+      <label class="muted" for="caseIn">Your text</label><textarea id="caseIn" class="field" placeholder="Type or paste text..."></textarea>
+      <div class="tool-actions"><button class="btn secondary caseBtn" data-case="upper">UPPER</button><button class="btn secondary caseBtn" data-case="lower">lower</button></div>
+      <div class="tool-actions"><button class="btn secondary caseBtn" data-case="title">Title Case</button><button class="btn secondary caseBtn" data-case="camel">camelCase</button></div>
+      <div class="result" id="caseOut" aria-live="polite"></div><button class="btn small secondary" id="caseCopy">Copy result</button>
+    </section>
 
-<footer>© 2026 moumen.is-a.dev — Built to make money. Contact for ads: moumen [at] is-a.dev<br><br><b>Next:</b> Add 10 more tools = 10x traffic = $300/mo</footer>
+    <section class="card tool-card" data-search="age calculator birthday days lived next birthday">
+      <div class="card-top"><div class="tool-icon">◷</div><div><div class="number">TOOL 08</div><h3>Age Calculator</h3></div></div>
+      <p class="desc">Calculate age in years, months, days, days lived, and time until your next birthday.</p>
+      <label class="muted" for="ageIn">Date of birth</label><input class="field" id="ageIn" type="date">
+      <button class="btn" id="ageBtn">Calculate age</button>
+      <div class="result" id="ageOut" aria-live="polite"></div>
+    </section>
+
+    <section class="card tool-card" data-search="color picker hex rgb hsl palette generator gradient css">
+      <div class="card-top"><div class="tool-icon">◈</div><div><div class="number">TOOL 09</div><h3>Color Lab + Gradient</h3></div></div>
+      <p class="desc">Pick a color, copy HEX/RGB/HSL values, generate a palette, or create a CSS gradient.</p>
+      <label class="muted" for="colorIn">Choose base color</label><input class="field" type="color" id="colorIn" value="#00ff88">
+      <div class="result" id="colorOut">HEX: #00ff88</div>
+      <div class="tool-actions"><button class="btn secondary" id="copyHex">Copy HEX</button><button class="btn secondary" id="paletteBtn">Generate palette</button></div>
+      <div class="swatches" id="paletteOut"></div>
+      <label class="muted" for="gradientAngle">Gradient angle</label><input class="field" id="gradientAngle" type="range" min="0" max="360" value="135">
+      <div class="preview" id="gradientPreview"></div>
+      <div class="result" id="gradientCode"></div>
+      <button class="btn small secondary" id="gradientCopy">Copy gradient CSS</button>
+    </section>
+
+    <section class="card tool-card" data-search="base64 encoder decoder url encode decode unicode">
+      <div class="card-top"><div class="tool-icon">⟷</div><div><div class="number">TOOL 10</div><h3>Base64 + URL Encoder</h3></div></div>
+      <p class="desc">Encode or decode text, including Unicode and Arabic, or encode/decode URL components.</p>
+      <label class="muted" for="b64In">Input text</label><textarea id="b64In" class="field" placeholder="Enter text..."></textarea>
+      <div class="tool-actions"><button class="btn secondary" id="b64Encode">Base64 encode</button><button class="btn secondary" id="b64Decode">Base64 decode</button></div>
+      <div class="tool-actions"><button class="btn secondary" id="urlEncode">URL encode</button><button class="btn secondary" id="urlDecode">URL decode</button></div>
+      <div class="result" id="b64Out" aria-live="polite"></div><button class="btn small secondary" id="b64Copy">Copy result</button>
+    </section>
+  </div>
+
+  <div class="ad-slot" aria-label="Advertisement placement reserved for future approved ads">Advertisement space — activate only after approval from an ad provider.</div>
+
+  <section id="about" class="info-grid">
+    <div class="info"><h3>Built for everyday tasks</h3><p>Small, straightforward utilities designed to save time on common creator workflows.</p></div>
+    <div class="info"><h3>Privacy-conscious by design</h3><p>Text tools and image compression run locally in your browser. QR generation may load a library from a CDN.</p></div>
+    <div class="info"><h3>Need a website?</h3><p>Looking for a simple website for your project or business? Contact me to discuss the scope, timeline, and price.</p></div>
+  </section>
+  <section id="contact" class="info" style="margin-bottom:40px">
+    <h3>Contact & website services</h3>
+    <p>For website design inquiries, email <a href="mailto:moumen@is-a.dev">moumen@is-a.dev</a>. Include your business type, required pages, and preferred features so the project can be scoped clearly.</p>
+    <p class="notice">Before publishing, replace this email if needed and add real About, Privacy Policy, and Terms pages that match the actual site's practices.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div><a class="logo" href="#">MOUMEN<b>.DEV</b></a><p style="margin-top:7px">Free browser tools for creators.</p><p class="notice">© <span id="year"></span> MOUMEN.DEV</p></div>
+    <div class="footer-links"><a href="#tools">Tools</a><a href="#about">About</a><a href="#contact">Contact</a><a href="mailto:moumen@is-a.dev">Email</a></div>
+  </div>
+</footer>
 
 <script>
-function genQR(){const v=document.getElementById('qrIn').value;if(!v)return alert('Enter link');document.getElementById('qrcode').innerHTML='';new QRCode(document.getElementById('qrcode'),{text:v,width:180,height:180});}
-function ytThumb(){let u=document.getElementById('ytIn').value;let id=(u.match(/v=([^&]+)/)||[])[1]||u.split('/').pop().split('?')[0];if(!id||id.length<6)return alert('Invalid URL');document.getElementById('ytOut').innerHTML=`<div class=result><img src="https://img.youtube.com/vi/${id}/hqdefault.jpg" style="width:100%;border-radius:8px"><br><br><a href="https://img.youtube.com/vi/${id}/maxresdefault.jpg" target="_blank">⬇️ Download 1280x720</a> | <a href="https://img.youtube.com/vi/${id}/hqdefault.jpg" target="_blank">⬇️ 480x360</a></div>`;}
-function compress(){let f=document.getElementById('imgIn').files[0];if(!f)return alert('Select image');let img=new Image();img.src=URL.createObjectURL(f);img.onload=()=>{let cv=document.getElementById('cvs');let ctx=cv.getContext('2d');cv.width=img.width*0.7;cv.height=img.height*0.7;ctx.drawImage(img,0,0,cv.width,cv.height);let a=document.createElement('a');a.download='moumen-compressed.jpg';a.href=cv.toDataURL('image/jpeg',0.7);a.textContent='⬇️ Download Compressed Image';a.className='btn';a.style.display='block';a.style.textAlign='center';a.style.textDecoration='none';a.style.marginTop='10px';document.getElementById('imgOut').innerHTML='';document.getElementById('imgOut').appendChild(a);}}
-function genPass(){let chars='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%';let p='';for(let i=0;i<16;i++)p+=chars[Math.floor(Math.random()*chars.length)];let el=document.getElementById('passOut');el.style.display='block';el.innerHTML=p+' <button onclick="navigator.clipboard.writeText(\''+p+'\')" style="float:right;background:#222;color:#fff;border:none;padding:4px 8px;border-radius:6px;cursor:pointer">Copy</button>';}
-function countW(){let t=document.getElementById('wordIn').value;let w=t.trim()?t.trim().split(/\s+/).length:0;document.getElementById('wordOut').innerText=w+' words • '+t.length+' chars • '+Math.ceil(w/200)+' min read';}
+(() => {
+  "use strict";
+  const $ = id => document.getElementById(id);
+  const show = (el, message) => { el.textContent = message; };
+  const copyText = async text => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(text);
+      else {
+        const ta = document.createElement("textarea"); ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.select(); const ok = document.execCommand("copy"); ta.remove();
+        if (!ok) throw new Error("Copy unavailable");
+      }
+      return true;
+    } catch (_) { return false; }
+  };
+  const formatBytes = n => n < 1024 ? n + " B" : n < 1024*1024 ? (n/1024).toFixed(1)+" KB" : (n/1024/1024).toFixed(2)+" MB";
+  $("year").textContent = new Date().getFullYear();
+
+  // Search tools
+  $("toolSearch").addEventListener("input", e => {
+    const q = e.target.value.toLowerCase().trim();
+    document.querySelectorAll(".tool-card").forEach(card => {
+      card.classList.toggle("hidden", !(card.dataset.search + " " + card.innerText).toLowerCase().includes(q));
+    });
+  });
+
+  // QR generator (external CDN library, gracefully reports if offline)
+  let qrInstance = null;
+  const qrResult = $("qrResult");
+  $("qrBtn").addEventListener("click", () => {
+    const value = $("qrIn").value.trim();
+    if (!value) { show(qrResult, "Enter a link or some text first."); return; }
+    if (typeof QRCode === "undefined") { show(qrResult, "QR library did not load. Connect to the internet and refresh, then try again."); return; }
+    qrResult.innerHTML = '<div class="qr-box" id="qrCanvasHost"></div>';
+    const host = $("qrCanvasHost");
+    try {
+      qrInstance = new QRCode(host, {text:value,width:220,height:220,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M});
+      $("qrDownload").disabled = false;
+    } catch (_) { show(qrResult, "Could not create the QR code. Check your input and try again."); }
+  });
+  $("qrDownload").addEventListener("click", () => {
+    const host = $("qrCanvasHost"); if (!host) return;
+    const canvas = host.querySelector("canvas");
+    const img = host.querySelector("img");
+    let url = canvas ? canvas.toDataURL("image/png") : (img ? img.src : "");
+    if (!url) return;
+    const a = document.createElement("a"); a.href=url; a.download="moumen-qr.png"; document.body.appendChild(a); a.click(); a.remove();
+  });
+
+  // YouTube thumbnails
+  function getVideoId(raw) {
+    const s = raw.trim(); if (/^[\w-]{11}$/.test(s)) return s;
+    try {
+      const u = new URL(s);
+      if (u.hostname.endsWith("youtu.be")) return u.pathname.split("/").filter(Boolean)[0] || "";
+      if (u.hostname.includes("youtube.com")) {
+        if (u.searchParams.get("v")) return u.searchParams.get("v");
+        const p = u.pathname.split("/").filter(Boolean);
+        if (["embed","shorts","live"].includes(p[0])) return p[1] || "";
+      }
+    } catch (_) {}
+    return "";
+  }
+  $("ytBtn").addEventListener("click", () => {
+    const id = getVideoId($("ytIn").value); const out = $("ytOut");
+    if (!id || !/^[\w-]{11}$/.test(id)) { show(out, "Enter a valid public YouTube URL or 11-character video ID."); return; }
+    const sizes = [["Max resolution","maxresdefault"],["High quality","hqdefault"],["Medium quality","mqdefault"],["Standard quality","sddefault"],["Default","default"]];
+    out.innerHTML = "";
+    sizes.forEach(([label,key]) => {
+      const wrap = document.createElement("div"); wrap.style.marginBottom="13px";
+      const title = document.createElement("p"); title.className="muted"; title.textContent=label; wrap.appendChild(title);
+      const img = document.createElement("img"); img.src=`https://img.youtube.com/vi/${id}/${key}.jpg`; img.alt=label+" thumbnail"; img.loading="lazy"; img.style.cssText="display:block;width:100%;border-radius:8px;margin:6px 0";
+      img.onerror=()=>{wrap.remove();}; wrap.appendChild(img);
+      const a = document.createElement("a"); a.className="btn small secondary"; a.href=img.src; a.target="_blank"; a.rel="noopener noreferrer"; a.textContent="Open / save image"; wrap.appendChild(a);
+      out.appendChild(wrap);
+    });
+  });
+
+  // Image compressor
+  $("compressBtn").addEventListener("click", () => {
+    const file = $("imgIn").files[0]; const out = $("imgOut");
+    if (!file) { show(out, "Choose an image first."); return; }
+    if (!file.type.startsWith("image/")) { show(out, "Please select a valid image file."); return; }
+    const objectUrl = URL.createObjectURL(file); const img = new Image();
+    img.onload = () => {
+      const canvas = $("compressCanvas"); const ctx = canvas.getContext("2d");
+      const maxSide = 2400; const scale = Math.min(1, maxSide / Math.max(img.width,img.height));
+      canvas.width=Math.max(1,Math.round(img.width*scale)); canvas.height=Math.max(1,Math.round(img.height*scale));
+      ctx.drawImage(img,0,0,canvas.width,canvas.height);
+      canvas.toBlob(blob => {
+        URL.revokeObjectURL(objectUrl);
+        if (!blob) { show(out, "Compression failed for this image."); return; }
+        const url=URL.createObjectURL(blob); out.innerHTML="";
+        const stats=document.createElement("p"); stats.textContent=`Original: ${formatBytes(file.size)} · Compressed: ${formatBytes(blob.size)} · Dimensions: ${canvas.width} × ${canvas.height}`; out.appendChild(stats);
+        const saving=file.size ? Math.round((1-blob.size/file.size)*100) : 0;
+        const note=document.createElement("p"); note.className="muted"; note.style.marginTop="5px"; note.textContent=saving>0?`${saving}% smaller`:`Output is ${Math.abs(saving)}% larger; compression depends on the image and selected quality.`; out.appendChild(note);
+        const a=document.createElement("a"); a.href=url; a.download="moumen-compressed.jpg"; a.className="btn small"; a.style.marginTop="10px"; a.textContent="Download compressed JPG"; out.appendChild(a);
+      },"image/jpeg",Number($("qualityIn").value));
+    };
+    img.onerror=()=>{URL.revokeObjectURL(objectUrl);show(out,"Could not read this image.");}; img.src=objectUrl;
+  });
+
+  // Password generator
+  let currentPassword = "";
+  $("passBtn").addEventListener("click", () => {
+    const length=Number($("passLength").value);
+    const chars="ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&*_-+=";
+    const cryptoObj=window.crypto;
+    if (!cryptoObj || !cryptoObj.getRandomValues) { show($("passOut"),"Secure random generation is unavailable in this browser."); return; }
+    const bytes=new Uint32Array(length); cryptoObj.getRandomValues(bytes);
+    currentPassword=Array.from(bytes,b=>chars[b%chars.length]).join("");
+    show($("passOut"),currentPassword);
+    const kinds=[/[a-z]/.test(currentPassword),/[A-Z]/.test(currentPassword),/[0-9]/.test(currentPassword),/[^a-zA-Z0-9]/.test(currentPassword)].filter(Boolean).length;
+    const score=Math.min(100,Math.round((length/32)*55+kinds*11));
+    $("passMeter").style.width=score+"%"; $("passMeter").style.background=score>75?"#00ff88":score>50?"#ffd166":"#ff6464";
+    $("passStrength").textContent=score>75?"Strength estimate: strong":score>50?"Strength estimate: good":"Strength estimate: consider a longer password";
+  });
+  $("passCopy").addEventListener("click",async()=>{if(!currentPassword){show($("passOut"),"Generate a password first.");return;} $("passStrength").textContent=await copyText(currentPassword)?"Copied to clipboard.":"Copy failed; select the password and copy it manually.";});
+
+  // Word counter and keyword density
+  function updateWords() {
+    const t=$("wordIn").value; const words=t.trim()?t.trim().split(/\s+/u):[];
+    const keyword=$("keywordIn").value.trim();
+    let count=0;
+    if(keyword && words.length) {
+      const escaped=keyword.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+      try { count=(t.match(new RegExp(escaped,"giu"))||[]).length; } catch (_) {}
+    }
+    const density=words.length&&keyword?(count/words.length*100).toFixed(2)+"%":"—";
+    show($("wordOut"),`Words: ${words.length} · Characters: ${t.length} · Characters (no spaces): ${t.replace(/\s/g,"").length} · Reading time: ${words.length?Math.max(1,Math.ceil(words.length/200)):0} min · Keyword matches: ${count} · Keyword density: ${density}`);
+  }
+  $("wordIn").addEventListener("input",updateWords); $("keywordIn").addEventListener("input",updateWords);
+
+  // Background filter demo: deliberately not marketed as true background removal
+  let bgObjectUrl = "";
+  $("bgIn").addEventListener("change", () => {
+    const file=$("bgIn").files[0]; const out=$("bgOut"); out.innerHTML="";
+    if(bgObjectUrl) URL.revokeObjectURL(bgObjectUrl);
+    if(!file) return;
+    if(!file.type.startsWith("image/")){show(out,"Choose a valid image.");return;}
+    bgObjectUrl=URL.createObjectURL(file);
+    const img=document.createElement("img"); img.src=bgObjectUrl; img.alt="Local image filter demo"; img.style.cssText="width:100%;max-height:250px;object-fit:contain;border-radius:8px";
+    img.style.filter=$("bgFilter").value; out.appendChild(img);
+  });
+  $("bgFilter").addEventListener("change",()=>{const img=$("bgOut").querySelector("img");if(img)img.style.filter=$("bgFilter").value;});
+
+  // Case converter
+  let caseResult="";
+  document.querySelectorAll(".caseBtn").forEach(btn=>btn.addEventListener("click",()=>{
+    const text=$("caseIn").value; let result=text;
+    if(btn.dataset.case==="upper") result=text.toLocaleUpperCase();
+    if(btn.dataset.case==="lower") result=text.toLocaleLowerCase();
+    if(btn.dataset.case==="title") result=text.toLocaleLowerCase().replace(/(^|[\s\-'])(\p{L})/gu,(_,sep,ch)=>sep+ch.toLocaleUpperCase());
+    if(btn.dataset.case==="camel") result=text.trim().toLocaleLowerCase().split(/[^\p{L}\p{N}]+/u).filter(Boolean).map((part,i)=>i?part.charAt(0).toLocaleUpperCase()+part.slice(1):part).join("");
+    caseResult=result; show($("caseOut"),result);
+  }));
+  $("caseCopy").addEventListener("click",async()=>{show($("caseOut"),await copyText(caseResult)?caseResult+"\n\nCopied to clipboard.":caseResult+"\n\nCopy failed.");});
+
+  // Age calculator
+  $("ageIn").max=new Date().toISOString().slice(0,10);
+  $("ageBtn").addEventListener("click",()=>{
+    const val=$("ageIn").value; const out=$("ageOut");
+    if(!val){show(out,"Choose your date of birth first.");return;}
+    const birth=new Date(val+"T12:00:00"); const today=new Date(); today.setHours(12,0,0,0);
+    if(Number.isNaN(birth.getTime())||birth>today){show(out,"Please choose a valid date that is not in the future.");return;}
+    let years=today.getFullYear()-birth.getFullYear(); let months=today.getMonth()-birth.getMonth(); let days=today.getDate()-birth.getDate();
+    if(days<0){months--; const daysPrevMonth=new Date(today.getFullYear(),today.getMonth(),0).getDate(); days+=daysPrevMonth;}
+    if(months<0){years--;months+=12;}
+    const lived=Math.floor((today-birth)/86400000);
+    const next=new Date(today.getFullYear(),birth.getMonth(),birth.getDate(),12);
+    if(next<=today) next.setFullYear(today.getFullYear()+1);
+    const until=Math.ceil((next-today)/86400000);
+    show(out,`Age: ${years} years, ${months} months, ${days} days · Days lived: ${lived.toLocaleString()} · Next birthday in: ${until} day(s).`);
+  });
+
+  // Color conversions, palette, gradients
+  function hexRgb(hex){const h=hex.replace("#","");return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];}
+  function rgbHsl(r,g,b){r/=255;g/=255;b/=255;const max=Math.max(r,g,b),min=Math.min(r,g,b);let h=0,s=0,l=(max+min)/2;if(max!==min){const d=max-min;s=l>.5?d/(2-max-min):d/(max+min);switch(max){case r:h=(g-b)/d+(g<b?6:0);break;case g:h=(b-r)/d+2;break;default:h=(r-g)/d+4;}h/=6;}return [Math.round(h*360),Math.round(s*100),Math.round(l*100)];}
+  function updateColor(){
+    const hex=$("colorIn").value.toLowerCase(),[r,g,b]=hexRgb(hex),[h,s,l]=rgbHsl(r,g,b);
+    show($("colorOut"),`HEX: ${hex} · RGB: rgb(${r}, ${g}, ${b}) · HSL: hsl(${h}, ${s}%, ${l}%)`);
+    const angle=$("gradientAngle").value; const second="#"+[255-r,255-g,255-b].map(v=>v.toString(16).padStart(2,"0")).join("");
+    const css=`linear-gradient(${angle}deg, ${hex}, ${second})`;
+    $("gradientPreview").style.background=css; show($("gradientCode"),`background: ${css};`);
+  }
+  $("colorIn").addEventListener("input",updateColor); $("gradientAngle").addEventListener("input",updateColor); updateColor();
+  $("copyHex").addEventListener("click",async()=>{const ok=await copyText($("colorIn").value);$("copyHex").textContent=ok?"Copied!":"Copy failed";setTimeout(()=>$("copyHex").textContent="Copy HEX",1200);});
+  $("paletteBtn").addEventListener("click",()=>{
+    const [r,g,b]=hexRgb($("colorIn").value); const [h,s,l]=rgbHsl(r,g,b);
+    const hsls=[[h,s,l],[h+25,s,l],[h-25,s,l],[h+155,Math.min(100,s),l],[h+180,s,Math.max(15,100-l)]];
+    const host=$("paletteOut");host.innerHTML="";
+    hsls.forEach(([hh,ss,ll])=>{
+      const hue=((hh%360)+360)%360; const color=`hsl(${hue}, ${ss}%, ${ll}%)`;
+      const btn=document.createElement("button");btn.className="swatch";btn.style.background=color;btn.type="button";btn.setAttribute("aria-label","Copy palette color "+color);
+      const span=document.createElement("span");span.textContent=color;btn.appendChild(span);
+      btn.addEventListener("click",async()=>{const ok=await copyText(color);span.textContent=ok?"Copied!":color;setTimeout(()=>span.textContent=color,1000);});
+      host.appendChild(btn);
+    });
+  });
+  $("gradientCopy").addEventListener("click",async()=>{const ok=await copyText($("gradientCode").textContent);$("gradientCopy").textContent=ok?"Copied!":"Copy failed";setTimeout(()=>$("gradientCopy").textContent="Copy gradient CSS",1200);});
+
+  // Base64 Unicode + URL encoding
+  function base64EncodeUnicode(str){const bytes=new TextEncoder().encode(str);let binary="";bytes.forEach(b=>binary+=String.fromCharCode(b));return btoa(binary);}
+  function base64DecodeUnicode(str){const binary=atob(str.trim());const bytes=Uint8Array.from(binary,c=>c.charCodeAt(0));return new TextDecoder("utf-8",{fatal:true}).decode(bytes);}
+  function runEncoding(fn){try{show($("b64Out"),fn($("b64In").value));}catch(_){show($("b64Out"),"Could not convert this input. Check the text or encoded value and try again.");}}
+  $("b64Encode").addEventListener("click",()=>runEncoding(base64EncodeUnicode));
+  $("b64Decode").addEventListener("click",()=>runEncoding(base64DecodeUnicode));
+  $("urlEncode").addEventListener("click",()=>runEncoding(encodeURIComponent));
+  $("urlDecode").addEventListener("click",()=>runEncoding(decodeURIComponent));
+  $("b64Copy").addEventListener("click",async()=>{const ok=await copyText($("b64Out").textContent);$("b64Copy").textContent=ok?"Copied!":"Copy failed";setTimeout(()=>$("b64Copy").textContent="Copy result",1200);});
+})();
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 </body>
 </html>
